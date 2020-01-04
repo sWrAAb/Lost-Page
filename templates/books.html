@@ -1,36 +1,14 @@
 {% extends 'base.html' %} {% block content %}
 
-<ul uk-accordion="multiple: true">
-    <li class="uk-open">
-        <a class="uk-accordion-title" href="#">Item 1</a>
-        <div class="uk-accordion-content">
-            <p>1</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title" href="#">Item 2</a>
-        <div class="uk-accordion-content">
-            <p>2</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title" href="#">Item 3</a>
-        <div class="uk-accordion-content">
-            <p>3</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title" href="#">Item 3</a>
-        <div class="uk-accordion-content">
-            <p>4</p>
-        </div>
-    </li>
-    <li>
-        <a class="uk-accordion-title" href="#">Item 3</a>
-        <div class="uk-accordion-content">
-            <p>5</p>
-        </div>
-    </li>
-</ul>
+<h1>Books</h1>
 
-{% endblock %}
+{% for book in books %}
+<!--{{ book.title }} {{ book.genre }} {{ book.description }}-->
+
+
+
+<h2>{{ book.title }} by {{ book.author }}. Published in {{ book.year }} </h2>
+
+<p>{{ book.description }}</p>
+
+{% endfor %} {% endblock %}
