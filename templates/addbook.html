@@ -1,0 +1,41 @@
+{% extends 'base.html' %} {% block content %}
+<form>
+    <fieldset class="uk-fieldset" method="POST">
+        <legend class="uk-legend add-book-title-margin">Add a book</legend>
+        <div class="uk-margin">
+            <h4 class="add-book-title add-book-title-margin">Book title</h4>
+            <input class="uk-input" name="book_title" type="text" placeholder="Title">
+        </div>
+        <div class="uk-margin">
+            <h4 class="add-book-title add-book-title-margin">Author</h4>
+            <input class="uk-input" name="book_author" type="text" placeholder="Author">
+        </div>
+        <div class="uk-margin">
+            <h4 class="add-book-title add-book-title-margin">Year of publishing</h4>
+            <input class="uk-input" name="book_year" type="text" placeholder="Year of publishing">
+        </div>
+        <div class="uk-margin">
+            <label><h4 class="add-book-title add-book-title-margin">Select genre</h4></label>
+            <div class="uk-form-controls">
+                <select class="uk-select" id="form-stacked-select" name="book_genre">
+                    <option>Classic</option>
+                    <option>Comedy</option>
+                    <option>Divination</option>
+                    <option>Fantasy</option>
+                    <option>Fiction</option>
+                    <option>Mystery</option>
+                    <option>Nonfiction</option>
+                    <option>Romance</option>
+                    <option>Science Fiction</option>
+                </select>
+            </div>
+        </div>
+        <div class="uk-margin">
+            <h4 class="add-book-title add-book-title-margin">Book description</h4>
+            <textarea class="uk-textarea" rows="5" name="book_description" type="text" placeholder="Description"></textarea>
+        </div>
+    </fieldset>
+</form>
+<p uk-margin class=" add-book-title-button">
+    <button class="uk-button uk-button-default">Button</button>
+</p> {% endblock content%}

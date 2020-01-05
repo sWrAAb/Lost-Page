@@ -3,3 +3,22 @@ body {
     background-color: whitesmoke;
     min-height: 100vh;
 }
+
+
+/*----Add book page----*/
+
+.add-book-title {
+    margin: 0 0 5px 0;
+    font-size: 1em;
+}
+
+.add-book-title-margin {
+    margin-left: 5px;
+}
+
+.add-book-title-button {
+    margin-top: 5px;
+}
+
+
+/*----/Add book page----*/
