@@ -2,4 +2,8 @@
 
 <h1>Categories</h1>
 
-{% endblock content %}
+{% for cat in categories%}
+
+<p>{{ cat.category_name}}</p>
+
+{% endfor%} {% endblock content %}

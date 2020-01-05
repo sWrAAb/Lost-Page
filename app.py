@@ -1,6 +1,7 @@
 import os
-from flask import Flask, render_template
+from flask import Flask, render_template, redirect, request, url_for
 from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
 from os import path
 
 if path.exists("env.py"):
@@ -15,19 +16,26 @@ mongo = PyMongo(app)
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template("index.html")
+    return render_template('index.html')
 
 @app.route('/books')
 def books():
-    return render_template("books.html", books=mongo.db.books.find())
+    return render_template('books.html', books=mongo.db.books.find())
 
 @app.route('/categories')
 def categories():
-    return render_template("categories.html", books=mongo.db.categories.find())
+    return render_template('categories.html', categories=mongo.db.categories.find())
 
 @app.route('/add_book')
 def add_book():
-    return render_template("addbook.html")
+    return render_template('addbook.html',categories=mongo.db.categories.find(), book=mongo.db.books.find())
+
+@app.route('/insert_book', methods=['POST'])
+def insert_book():
+        books = mongo.db.books
+        books.insert_one(request.form.to_dict())
+        return redirect(url_for('books'))
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
