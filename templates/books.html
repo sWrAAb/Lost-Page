@@ -1,14 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Books</h1>
-
 {% for book in books %}
-<!--{{ book.title }} {{ book.genre }} {{ book.description }}-->
-
-
-
-<h2>{{ book.title }} by {{ book.author }}. Published in {{ book.year }} </h2>
-
-<p>{{ book.description }}</p>
+<div class="uk-container-large uk-margin-auto">
+    <ul uk-accordion>
+        <li>
+            <a class="uk-accordion-title" href="#">
+            {{ book.title }} by {{ book.author }}. Published in {{ book.year }} 
+            <a class="uk-button uk-button-default" href="">Edit</a>
+            <button class="uk-button uk-button-default">Delete</button>
+            </a>
+            <div class="uk-accordion-content">
+                <p>{{ book.description }}</p>
+            </div>
+        </li>
+    </ul>
+</div>
 
 {% endfor %} {% endblock content %}
+
+<!--{{ book.genre }}-->

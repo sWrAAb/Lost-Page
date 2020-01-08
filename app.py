@@ -26,15 +26,17 @@ def books():
 def categories():
     return render_template('categories.html', categories=mongo.db.categories.find())
 
+
 @app.route('/add_book')
 def add_book():
     return render_template('addbook.html',categories=mongo.db.categories.find(), book=mongo.db.books.find())
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-        books = mongo.db.books
-        books.insert_one(request.form.to_dict())
-        return redirect(url_for('books'))
+    '''Add a book to database'''
+    books = mongo.db.books
+    books.insert_one(request.form.to_dict())
+    return redirect(url_for('books'))
 
 
 if __name__ == "__main__":
