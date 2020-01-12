@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container-fluid">
+    <form action="{{ url_for('update_book', book_id=book._id) }}" method="POST" id="editbook-form">
+        <div class="form-group">
+            <label>Book title</label>
+            <input class="form-control" id="title" name="title" type="text" placeholder="Title" value="{{book.title}}" required>
+        </div>
+        <div class="form-group">
+            <label>Author</label>
+            <input class="form-control" id="author" name="author" type="text" placeholder="Author" value="{{book.author}}">
+        </div>
+        <div class="form-group">
+            <label>Year of publishing</label>
+            <input class="form-control" id="year" name="year" type="text" placeholder="Year of publishing" value="{{book.year}}">
+        </div>
+        <div class="form-group">
+            <label>Select genre</label>
+            <select class="form-control" id="genre" name="genre">
+                <option value="" disabled selected>Select genre</option>
+                {% for cat in categories %}
+                {% if cat.category_name == book.genre %}
+                <option value="{{ cat.category_name}}" selected>{{ cat.category_name}}</option>
+                {% else %}
+                <option value="{{ cat.category_name}}">{{ cat.category_name}}</option>
+                {% endif %}
+                {% endfor %}
+        </select>
+        </div>
+        <div class="form-group">
+            <label>Book cover</label>
+            <input type="text" class="form-control" id="cover_img" name="cover_img" placeholder="Add link to cover image" value="{{book.cover_img}}">
+        </div>
+
+        <div class="form-group">
+            <label>Book description</label>
+            <textarea class="form-control" rows="4" id="description" name="description" type="text" placeholder="Description" value="{{book.description}}"></textarea>
+        </div>
+    </form>
+    <button class="btn btn-primary" type="submit" name="action" form="editbook-form">Update book</button>
+</div>
+
+
+</form> {% endblock%}

@@ -44,8 +44,33 @@ def insert_book():
 
 @app.route('/view_book/<book_id>', methods=["GET", "POST"])    
 def view_book(book_id):
+    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
     all_books = mongo.db.books.find({"_id": ObjectId(book_id)})
-    return render_template("viewbook.html", books = all_books)
+    return render_template("viewbook.html", books = all_books, book=the_book)
+
+# Edit book #
+
+@app.route('/edit_book/<book_id>')
+def edit_book(book_id):
+    the_book = mongo.db.books.find_one({"_id": ObjectId(book_id)})
+    all_categories =  mongo.db.categories.find()
+    return render_template('editbook.html', book=the_book, categories=all_categories)
+
+# Update form #
+
+@app.route('/update_book/<book_id>', methods=["POST"])
+def update_book(book_id):
+    books = mongo.db.books
+    books.update( {'_id': ObjectId(book_id)},
+    {
+        'title': request.form.get('title'),
+        'author': request.form.get('author'),
+        'year': request.form.get('year'),
+        'genre': request.form.get('genre'),
+        'cover_img': request.form.get('cover_img'),
+        'description': request.form.get('description')
+    })
+    return redirect(url_for('books'))
 
 
 if __name__ == "__main__":
