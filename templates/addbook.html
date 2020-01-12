@@ -1,36 +1,39 @@
 {% extends 'base.html' %} {% block content %}
-<form action="{{ url_for('insert_book') }}" method="POST">
-    <fieldset class="uk-fieldset">
-        <legend class="uk-legend add-book-title-margin">Add a book</legend>
-        <div class="uk-margin">
-            <h4 class="add-book-title add-book-title-margin">Book title</h4>
-            <input class="uk-input" id="title" name="title" type="text" placeholder="Title" required>
+<div class="container-fluid">
+    <form action="{{ url_for('insert_book') }}" method="POST" id="addbook-form">
+        <div class="form-group">
+            <label>Book title</label>
+            <input class="form-control" id="title" name="title" type="text" placeholder="Title" required>
         </div>
-        <div class="uk-margin">
-            <h4 class="add-book-title add-book-title-margin">Author</h4>
-            <input class="uk-input" id="author" name="author" type="text" placeholder="Author">
+        <div class="form-group">
+            <label>Author</label>
+            <input class="form-control" id="author" name="author" type="text" placeholder="Author">
         </div>
-        <div class="uk-margin">
-            <h4 class="add-book-title add-book-title-margin">Year of publishing</h4>
-            <input class="uk-input" id="year" name="year" type="text" placeholder="Year of publishing">
+        <div class="form-group">
+            <label>Year of publishing</label>
+            <input class="form-control" id="year" name="year" type="text" placeholder="Year of publishing">
         </div>
-        <div class="uk-margin">
-            <label><h4 class="add-book-title add-book-title-margin">Select genre</h4></label>
-            <div class="uk-form-controls">
-                <select class="uk-select" id="genre" name="genre">
-                    <option value="" disabled selected>Select genre</option>
-                    {% for cat in categories %}
-                        <option>{{ cat.category_name}}</option>
-                    {% endfor %}
-                </select>
-            </div>
+        <div class="form-group">
+            <label>Select genre</label>
+            <select class="form-control" id="genre" name="genre">
+                <option value="" disabled selected>Select genre</option>
+                {% for cat in categories %}
+                <option value="{{ cat.category_name}}">{{ cat.category_name}}</option>
+                {% endfor %}
+        </select>
         </div>
-        <div class="uk-margin">
-            <h4 class="add-book-title add-book-title-margin">Book description</h4>
-            <textarea class="uk-textarea" rows="5" id="description" name="description" type="text" placeholder="Description"></textarea>
+        <div class="form-group">
+            <label>Book cover</label>
+            <input type="text" class="form-control" id="cover_img" name="cover_img" placeholder="Add link to cover image">
         </div>
-    </fieldset>
+
+        <div class="form-group">
+            <label>Book description</label>
+            <textarea class="form-control" rows="4" id="description" name="description" type="text" placeholder="Description"></textarea>
+        </div>
+    </form>
+    <button class="btn btn-primary" type="submit" form="addbook-form">Primary</button>
+</div>
 
 
-    <button class="uk-button uk-button-primary uk-animation-shake add-book-title-button" type="submit" name="action">Add Book</button>
 </form> {% endblock%}

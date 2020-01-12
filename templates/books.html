@@ -2,19 +2,57 @@
 
 <h1>Books</h1>
 {% for book in books %}
-<div class="uk-container-large uk-margin-auto">
-    <ul uk-accordion>
-        <li>
-            <a class="uk-accordion-title" href="#">
-            {{ book.title }} by {{ book.author }}. Published in {{ book.year }} 
-            <a class="uk-button uk-button-default" href="">Edit</a>
-            <button class="uk-button uk-button-default">Delete</button>
-            </a>
-            <div class="uk-accordion-content">
-                <p>{{ book.description }}</p>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12 col-md-3">
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="container-fluid">
+    <div class="accordion" id="accordionExample">
+        <div class="card">
+            <div class="card-header" id="headingTwo">
+                <h2 class="mb-0">
+                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <img class="book-cover-image" src="{{ book.cover_img }}">&nbsp&nbsp{{ book.title }} by {{ book.author }}. Published in {{ book.year }}
+                </button>
+                </h2>
             </div>
-        </li>
-    </ul>
+            <div id="collapseTwo" class="collapsing" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div class="card-body">
+                    <img href={{book.cover_img}}>
+                    <p>{{ book.description }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 
 {% endfor %} {% endblock content %}

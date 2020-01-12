@@ -13,10 +13,11 @@ app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
 
 mongo = PyMongo(app)
 
+
 @app.route('/')
 @app.route('/home')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', books=mongo.db.books.find())
 
 @app.route('/books')
 def books():
@@ -24,7 +25,8 @@ def books():
 
 @app.route('/categories')
 def categories():
-    return render_template('categories.html', categories=mongo.db.categories.find())
+    
+    return render_template('categories.html', books = mongo.db.books.find())
 
 
 @app.route('/add_book')
@@ -37,6 +39,8 @@ def insert_book():
     books = mongo.db.books
     books.insert_one(request.form.to_dict())
     return redirect(url_for('books'))
+
+
 
 
 if __name__ == "__main__":

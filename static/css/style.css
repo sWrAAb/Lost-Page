@@ -26,3 +26,8 @@ body {
 h1 {
     text-align: center;
 }
+
+.book-cover-image {
+    height: 150px;
+    width: 100px;
+}
