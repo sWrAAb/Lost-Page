@@ -6,7 +6,7 @@
     <div class="row justify-content-center">
         {% for book in books %}
         <div class="card m-auto" style="width: 18rem;">
-            <a href="#">
+            <a href="{{url_for('view_book', book_id=book._id)}}">
                 <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
             </a>
         </div>

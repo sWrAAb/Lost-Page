@@ -28,6 +28,7 @@ def categories():
     
     return render_template('categories.html', books = mongo.db.books.find())
 
+# Add a book to database #
 
 @app.route('/add_book')
 def add_book():
@@ -35,12 +36,16 @@ def add_book():
 
 @app.route('/insert_book', methods=['POST'])
 def insert_book():
-    '''Add a book to database'''
     books = mongo.db.books
     books.insert_one(request.form.to_dict())
     return redirect(url_for('books'))
 
+# View book info #
 
+@app.route('/view_book/<book_id>', methods=["GET", "POST"])    
+def view_book(book_id):
+    all_books = mongo.db.books.find({"_id": ObjectId(book_id)})
+    return render_template("viewbook.html", books = all_books)
 
 
 if __name__ == "__main__":
