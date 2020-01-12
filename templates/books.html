@@ -1,60 +1,20 @@
 {% extends 'base.html' %} {% block content %}
 
 <h1>Books</h1>
-{% for book in books %}
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 col-md-3">
-
+<div class="container">
+    <div class="row justify-content-center">
+        {% for book in books %}
+        <div class="card m-auto" style="width: 18rem;">
+            <a href="#">
+                <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
+            </a>
         </div>
+        {% endfor %}
     </div>
+    <a class="btn btn-primary" href="{{ url_for('add_book') }}" class="btn btn-light" role="button">Add book</a>
 </div>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="container-fluid">
-    <div class="accordion" id="accordionExample">
-        <div class="card">
-            <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                    <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    <img class="book-cover-image" src="{{ book.cover_img }}">&nbsp&nbsp{{ book.title }} by {{ book.author }}. Published in {{ book.year }}
-                </button>
-                </h2>
-            </div>
-            <div id="collapseTwo" class="collapsing" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                    <img href={{book.cover_img}}>
-                    <p>{{ book.description }}</p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-{% endfor %} {% endblock content %}
-
-<!--{{ book.genre }}-->
+{% endblock %}
