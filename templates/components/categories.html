@@ -1,0 +1,6 @@
+{% for cat in categories %}
+<div class="col-4 justify-content-center checkbox m-auto p-auto">
+    <p>{{ cat.category_name}}</p>
+    <input type="checkbox" checked data-toggle="toggle" data-size="sm">
+</div>
+{% endfor %}

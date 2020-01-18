@@ -1,11 +1,22 @@
 {% extends 'base.html' %} {% block content %}
 
-<h1>Books</h1>
+<div class="container">
+    <h1>Books</h1>
+    <hr> {% for a in adventures %}
+    <p>{{ a.cover_img }}</p>
+    {% endfor %}
+
+    <div class="row justify-content-center m-auto p-0"> {% include 'components/categories.html' %}
+
+
+    </div>
+</div>
 
 <div class="container">
+    <hr>
     <div class="row justify-content-center">
         {% for book in books %}
-        <div class="card m-auto" style="width: 18rem;">
+        <div class="card m-auto" style="width: 12rem;">
             <a href="{{url_for('view_book', book_id=book._id)}}">
                 <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
             </a>
@@ -13,6 +24,7 @@
         {% endfor %}
     </div>
 </div>
+
 
 
 

@@ -1,0 +1,27 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\swraa\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add bootstrap4-toggle
+
+PATH: 
+  D:\A_Visual_studio_code\Practical_Python\lessons\MongoDb\.mongovenv\Scripts;C:\Python27\;C:\Python27\Scripts;C:\Perl64\site\bin;C:\Perl64\bin;C:\Program Files\AdoptOpenJDK\jdk-11.0.3.7-hotspot\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Java\jdk-12.0.2\bin;C:\Users\swraa\AppData\Local\Programs\Python\Python37-32;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\nodejs\;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\swraa\AppData\Local\Microsoft\WindowsApps;C:\Users\swraa\AppData\Local\GitHubDesktop\bin;C:\Users\swraa\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\swraa\AppData\Local\Microsoft\WindowsApps;C:\Users\swraa\AppData\Roaming\npm;C:\Program Files\heroku\bin;C:\Program Files\MongoDB\Server\4.2\bin
+
+Yarn version: 
+  1.21.1
+
+Node version: 
+  13.5.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: connect ETIMEDOUT 104.16.16.35:443
+      at TCPConnectWrap.afterConnect [as oncomplete] (net.js:1136:16)
+
+npm manifest: 
+  No manifest
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
