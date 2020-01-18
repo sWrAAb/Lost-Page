@@ -1,0 +1,1 @@
+{% extends 'base.html' %}{% block content %} {{query}} {{books}} {% for book in books %} {{ book.title}} {{book.author}} {{book.genre}} {% endfor %} {% endblock %}

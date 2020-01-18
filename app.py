@@ -4,6 +4,7 @@ from flask import Flask, redirect, render_template, request, url_for, jsonify, s
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
+import re
 
 if path.exists("env.py"):
     import env
@@ -105,6 +106,21 @@ def books_total():
     books_count = mongo.db.books.count
     return dict(books_count=books_count)
 
+
+# Search books
+
+@app.route('/search')
+def search():
+    user_query = request.args['query']
+    query = {'$regex': re.compile('.*{}.*'.format(user_query))}
+    result = mongo.db.books.find({
+        '$or': [
+            {'title': query},
+            {'author': query},
+            {'genre': query},
+        ]
+    })
+    return render_template('search_results.html', query = user_query, books = result)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
