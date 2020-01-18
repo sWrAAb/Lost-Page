@@ -1,6 +1,6 @@
 body {
     max-width: 100vw;
-    background-image: url('https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fedge.alluremedia.com.au%2Fm%2Fg%2F2017%2F12%2Fbook-stack.jpg&f=1&nofb=1');
+    background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnXDDV1PuRocfjYWyVRmwga0dJweI-egkCieuYK4Th5QLXtynQ&s');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
@@ -27,7 +27,7 @@ body {
 /*----/Add book page----*/
 
 h1 {
-    margin text-align: center;
+    margin-top: 15px;
     font-family: 'Indie Flower', cursive, sans-serif;
 }
 
@@ -58,4 +58,12 @@ h1 {
 
 h6 {
     margin-top: 30px;
+}
+
+.view-book-container {
+    float: left;
+}
+
+.delete-book-button {
+    margin-left: 5px;
 }

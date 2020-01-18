@@ -4,27 +4,36 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-12 m-auto p-0 view-book-container">
-            <h2>Book details</h2>
-            <hr> {% for book in books%}
+        <div class="col-12">
+            <h1>Book details</h1>
+        </div>
+    </div>
+    <hr><br>
+    <div class="row">
+        <div class="col-11 col-md-5 m-0 p-0 view-book-container">
+            {% for book in books%}
             <div class="card m-auto" style="width: 18rem;">
                 <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
             </div>
-
-            <h4 class="text-center"> <span>{{book.title}}</span></h4>
-            <h4 class="text-center"> By: <span>{{book.author}}</span></h4>
-            <h5 class="text-center"> Published in: <span>{{book.year}}</span></h5>
-            <h5 class="text-center"> Genre: <span>{{book.genre}}</span>
+        </div>
+        <div class="col-11 col-md-5 m-0 p-0">
+            <h4 class=""> <span>{{book.title}}</span></h4>
+            <h4 class=""> By: <span>{{book.author}}</span></h4>
+            <h5 class=""> Published in: <span>{{book.year}}</span></h5>
+            <h5 class=""> Genre: <span>{{book.genre}}</span>
             </h5>
             <h6 class="">Description:</h6>
             <p>{{book.description}}</p>
-            {% endfor %}
-
         </div>
+        {% endfor %}
+
+
     </div>
     <div>
-        <a class="btn btn-warning" href="{{ url_for('edit_book', book_id=book._id) }}" role="button">Edit book</a>
-        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#confirm-delete-modal">Delete book</button>
+        <div class="col-12 edit-delete-button-column mt-3 mx-3">
+            <a class="btn btn-warning" href="{{ url_for('edit_book', book_id=book._id) }}" role="button">Edit book</a>
+            <button type="button" class="btn btn-danger delete-book-button" data-toggle="modal" data-target="#confirm-delete-modal">Delete book</button>
+        </div>
     </div>
 </div>
 

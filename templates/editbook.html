@@ -1,6 +1,5 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container-fluid">
-    {{book}}
+<div class="container">
     <form action="{{ url_for('update_book', book_id=book._id) }}" method="POST" id="editbook-form">
         <div class="form-group">
             <label>Book title</label>
@@ -38,6 +37,7 @@
         </div>
     </form>
     <button class="btn btn-primary" type="submit" name="action" form="editbook-form">Update book</button>
+    <a class="btn btn-primary" href="{{url_for('books')}}" role="button">Close</a>
 </div>
 
 

@@ -23,27 +23,33 @@ def index():
 
 @app.route('/books')
 def books():
-    adventure = mongo.db.books.find( { 'genre':' Adventure'} )
-    comedy = mongo.db.books.find( { 'genre':' Comedy'} )
-    divination = mongo.db.books.find( { 'genre':'Divination'} )
-    fantasy = mongo.db.books.find( { 'genre':'Fantasy'} )
-    fiction = mongo.db.books.find( { 'genre':'Fiction'} )
-    mystery = mongo.db.books.find( { 'genre':'Mystery'} )
-    nonfiction = mongo.db.books.find( { 'genre':'Nonfiction'} )
-    romance = mongo.db.books.find( { 'genre':'Romance'} )
+    """
+    Read all books from database.
+
+    Display all books initially, with option to Search.
+    Search function works by reading url args for existing data.
+    """
+    # show correct authors on cards
     
     return render_template('books.html', 
                             books=mongo.db.books.find(), 
                             categories=mongo.db.categories.find(), 
-                            adventure=adventure, 
-                            comedy=comedy,
-                            divination=divination,
-                            fantasy=fantasy,
-                            fiction=fiction,
-                            mystery=mystery,
-                            nonfiction=nonfiction,
-                            romance=romance)
-                                                        
+                            )
+
+# Search books
+
+@app.route('/search')
+def search():
+    user_query = request.args['query']
+    query = {'$regex': re.compile('.*{}.*'.format(user_query))}
+    result = mongo.db.books.find({
+        '$or': [
+            {'title': query},
+            {'author': query},
+            {'genre': query},
+        ]
+    })
+    return render_template('search_results.html', query = user_query, books = result)
 
 @app.route('/categories')
 def categories():
@@ -107,20 +113,6 @@ def books_total():
     return dict(books_count=books_count)
 
 
-# Search books
-
-@app.route('/search')
-def search():
-    user_query = request.args['query']
-    query = {'$regex': re.compile('.*{}.*'.format(user_query))}
-    result = mongo.db.books.find({
-        '$or': [
-            {'title': query},
-            {'author': query},
-            {'genre': query},
-        ]
-    })
-    return render_template('search_results.html', query = user_query, books = result)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
