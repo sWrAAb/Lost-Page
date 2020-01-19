@@ -1,9 +1,18 @@
 {% extends 'base.html' %} {% block content %}
-<div class="container">
-    <h1 class="text-center">The Lost Page</h1>
+<div class="container" id="index-container">
+    <h1>The Lost Page</h1>
     <hr>
     <div class="row">
-        <div class="col index-image"></div>
+
+        <div class="col-12 index-image">
+            <a href="{{ url_for('books') }}">
+                <img class="index-image" src="https://cdn.wallpaperdirect.com/asset/img/product/143795/tiled/albany-fashion-library-black-and-white-wallpaper-tiled-143795.jpg"></a>
+        </div>
+        <div class="col-12 text-center blink">
+            <h5>
+                <a href="{{ url_for('books') }}">Click to enter</a>
+            </h5>
+        </div>
     </div>
 </div>
 {% endblock %}

@@ -61,7 +61,7 @@ def categories():
 
 #    CRUD: Create | Read | Update | Delete    #
 
-# --Create-- #
+# --CREATE-- #
 
 @app.route('/add_book')
 def add_book():
@@ -147,4 +147,4 @@ def books_total():
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
             port=os.environ.get('PORT'),
-            debug=True)
+            debug=False)
