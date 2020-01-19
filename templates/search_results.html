@@ -1,10 +1,7 @@
 {% extends 'base.html' %}{% block content %}
-
 <div class="container">
     <h6>Results for {{query}}:</h6>
     <hr>
-
-
     <div class="row justify-content-center">
         {% for book in books %}
         <div class="card m-auto" style="width: 12rem;">
@@ -14,8 +11,6 @@
         </div>
         {% endfor %}
     </div>
-    <a class="btn btn-primary" href="{{url_for('books')}}" role="button">Return to books</a>
+    <a class="btn btn-primary search-return-button" href="{{url_for('books')}}" role="button">Return to books</a>
 </div>
-
-
 {% endblock %}

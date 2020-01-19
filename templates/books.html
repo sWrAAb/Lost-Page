@@ -3,20 +3,15 @@
 <div class="container">
     <h1>Books</h1>
     <hr>
-
-
     <div class="row justify-content-center m-auto p-0">
-
         {% include 'search.html' %}
-
     </div>
 </div>
-
 <div class="container">
     <hr>
     <div class="row justify-content-center">
         {% for book in books %}
-        <div class="card m-auto" style="width: 12rem;">
+        <div class="card mx-auto my-2" style="width: 12rem;">
             <a href="{{url_for('view_book', book_id=book._id)}}">
                 <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
             </a>
@@ -24,8 +19,4 @@
         {% endfor %}
     </div>
 </div>
-
-
-
-
 {% endblock %}
