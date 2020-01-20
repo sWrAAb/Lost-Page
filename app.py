@@ -5,6 +5,10 @@ from bson.objectid import ObjectId
 from os import path
 import re
 
+if path.exists("env.py"):
+    import env
+
+
 # create instance of flask and assign it to app
 
 app = Flask(__name__)
@@ -42,8 +46,12 @@ def books():
 
 @app.route('/search')
 def search():
+    '''
+    Search books by keywords. Any letter however had to leave it 
+    case sensitive. If i add /i bug apears
+    '''
     user_query = request.args['query']
-    query = {'$regex': re.compile('.*{}.*'.format(user_query))}
+    query = {'$regex': re.compile('.*{}.*'.format(user_query)), '$Option': '/i'}
     result = mongo.db.books.find({
         '$or': [
             {'title': query},

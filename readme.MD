@@ -78,8 +78,52 @@ The Lost Page was designed to be simple and presentable using book images as lin
 
 ### Wireframes
 
-For my wireframes, I have used [Mockflow](https://mockflow.com/)
+- For my wireframes, I have used [Mockflow](https://mockflow.com/)
+- Images can be viewed in my [Wireframe](https://github.com/sWrAAb/Lost-Page/tree/master/static/images/Wireframes) folder
 
+
+##### back to [top](#table-of-contents)
+
+---
+
+## Features
+
+### Existing Features
+
+**View All Books**
+- On the *books* page, all books are initially displayed in order of adding.
+
+**Search Books**
+- On the **books** page above books is a search bar that uses users query to search books by author name, book name or genre. Trying to make it case insensitive resulted in a bug and becouse of lack of time, the search bar is case sensitive.
+
+**Add a Book**
+- [**C**RUD] Create or 'add' a new book. Defensive programming in place means users must adhere to minimal requirements when adding a new book. 
+
+**View a Book**
+- [C**R**UD] Read or 'review' books can be achieved by clicking on book image on books page. It is also possible to share a link to book via the share icon and modal. 
+
+**Update a Book**
+- [CR**U**D] Update or 'edit' book information.
+
+**Delete a Book**
+- [CRU**D**] Delete or 'remove' a book from the website and database.
+
+
+### Features Left to Implement
+
+Becouse of lack of time for finnishing this project some requirements were not completed.
+
+**Pagination**
+- At this time all books are displayed on a single page. It works now but might take long time to load when more books are added.
+
+**Comment and upvote section**
+- In the future will be added on view book page for users to share information about books.
+
+**User account** 
+- Password protected account will be added with a feature of saving books to favorites and shopcart.
+
+**Dynamic search bar**
+- Toggle buttons for categories will be added and they will display books from selected genres on the books page. 
 
 ##### back to [top](#table-of-contents)
 
