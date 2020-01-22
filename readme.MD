@@ -21,7 +21,6 @@
 4. [**Testing**](#testing)
     - [**Validators**](#validators)
     - [**Compatibility**](#compatibility)
-    - [**Known Issues**](#known-issues)
 
 5. [**Deployment**](#deployment)
     - [**Local Deployment**](#local-deployment)
@@ -64,7 +63,7 @@ The Lost Page was designed to be simple and presentable using book images as lin
 - [jQuery 3.4.1](https://code.jquery.com/jquery/)
     - In an effort to keep the JavaScript minimal, I have decided to use jQuery as foundation to my scripts framework.
 - [Flask 1.1.1](http://flask.pocoo.org/)
-    - Flask is a micro framework that I've used to render the back-end Python with the front-end Materialize.
+    - Flask is a microframework that I've used to render the back-end Python with the front-end Materialize.
 
 #### Icons
 
@@ -103,10 +102,10 @@ The Lost Page was designed to be simple and presentable using book images as lin
 - [C**R**UD] Read or 'review' books can be achieved by clicking on book image on books page. It is also possible to share a link to book via the share icon and modal. 
 
 **Update a Book**
-- [CR**U**D] Update or 'edit' book information.
+- [CR**U**D] Update or 'edit' book information.  
 
 **Delete a Book**
-- [CRU**D**] Delete or 'remove' a book from the website and database.
+- [CRU**D**] Delete or 'remove' a book from the website and database. Deletion requires confirmation in the form of modal.
 
 
 ### Features Left to Implement
@@ -128,3 +127,90 @@ Becouse of lack of time for finnishing this project some requirements were not c
 ##### back to [top](#table-of-contents)
 
 ---
+
+## Technologies Used
+
+- [VS Code](https://code.visualstudio.com/) - Used as my primary IDE for coding.
+- [GitHub](https://github.com/) - Used as remote storage of my code online.
+
+### Front-End Technologies
+
+- [HTML](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) - Used as the base for markup text.
+- [CSS](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS3) - Used as the base for cascading styles.
+- [jQuery 3.4.1](https://code.jquery.com/jquery/) - Used as the primary JavaScript functionality.
+- [Bootstrap 4.4.1](https://getbootstrap.com/) - Used as the overall design framework.
+
+
+### Back-End Technologies
+
+- **Flask**
+    - [Flask 1.1.1](http://flask.pocoo.org/) - Used as a microframework.
+    - [Jinja2 2.10.3](http://jinja.pocoo.org/docs/2.10/) - Used for templating with Flask.
+    - [Werkzeug  0.16.0](https://werkzeug.palletsprojects.com/en/0.16.x/) - Used for password hashing, authentication, and authorization.
+- **Heroku**
+    - [Heroku](https://www.heroku.com) - Used for app hosting.
+- **Python**    
+    - [Python 3.7.1](https://www.python.org/) - Used as the back-end programming language.
+    - [MongoDB Atlas](https://www.mongodb.com/) - Used to store my database in the 'cloud'.
+    - [PyMongo 3.10.0](https://api.mongodb.com/python/current/) - Used as the Python API for MongoDB.
+
+##### back to [top](#table-of-contents)
+
+## Testing
+
+
+
+### Validators
+
+**HTML**
+- [W3C HTML Validator](https://validator.w3.org) - Unfortunately the W3C Validator for HTML does not understand the Jinja templating syntax, so it therefore shows a lot of errors with regards to `{{ variables }}`, `{% for %} {% endfor %}`, etc. Aside from the Jinja warnings and errors, all of the remaining code is perfectly validating. 
+
+**CSS**
+- [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - Did not show any problems
+
+
+
+- **Same color for background-color and border-bottom-color** - The code below overrides the Materialize color for the checkbox animation effect, so the validator thinks this is an error, but is correct in order to override the color with my own.
+
+```css
+[type="radio"].with-gap:checked + span:after
+[type="radio"]:checked + span:after
+```
+
+**JavaScript**
+- [JShint](https://jshint.com/) - 
+    - There are 3 functions in this file.
+    - Function with the largest signature take 0 arguments, while the median is 0.
+    -  Largest function has 3 statements in it, while the median is 3.
+    - The most complex function has a cyclomatic complexity value of 1 while the median is 1.
+    - Undefined variable $ for jQuery 6 times
+**Python**
+- [PEP8 Online](http://pep8online.com/)
+    - My `.py` file returns 2 errors
+    - E127 continuation line over-indented for visual indent
+    - E128 continuation line under-indented for visual indent
+
+### Compatibility
+
+To ensure a broad range of users can successfully use this site, I tested it on major browsers in both desktop and mobile configuration.
+
+- Chrome 
+- Edge 
+- Firefox 
+- Opera 
+- Internet Explorer
+
+
+
+##### back to [top](#table-of-contents)
+
+### Local Deployment
+
+In order to run this project locally on your own system, you will need the following installed:
+- [Python3](https://www.python.org/downloads) to run the application.
+- [PIP](https://pip.pypa.io/en/stable/installing) to install all app requirements.
+- Any IDE such as [Microsoft Visual Studio Code](https://code.visualstudio.com).
+- [GIT](https://www.atlassian.com/git/tutorials/install-git) for cloning and version control.
+- [MongoDB](https://www.mongodb.com) to develop your own database either locally or remotely on MongoDB Atlas.
+
+N

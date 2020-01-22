@@ -13,10 +13,10 @@
         <div class="col-11 col-md-5 m-0 p-0 view-book-container">
             {% for book in books%}
             <div class="card m-auto" style="width: 18rem;">
-                <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
+                <img src="{{book.cover_img}}" class="card-img-top card-image" alt=" Add image">
             </div>
         </div>
-        <div class="col-11 col-md-5 m-0 p-0">
+        <div class="col-11 col-md-5 mt-2 p-0">
             <h4> <span>{{book.title}}</span></h4>
             <h4> By: <span>{{book.author}}</span></h4>
             <h5> Published in: <span>{{book.year}}</span></h5>
@@ -28,20 +28,20 @@
         {% endfor %}
 
         <!-- Share Button -->
-
-        <a id="share-btn" data-toggle="modal" data-target="#modal-share-book">
-            <span>Share</span>
-            <i class="fas fa-share-alt material-icons" aria-hidden="true"></i></a>
-
+        <div class="col-12 mt-2 ml-3">
+            <a id="share-btn" class="share-button" data-toggle="modal" data-target="#modal-share-book">
+                <span>Share</span>
+                <i class="fas fa-share-alt" aria-hidden="true"></i></a>
+        </div>
         <!-- Share modal -->
 
         <div class="col-12 col-md-6 col-lg-4">
-            <div id="modal-share-book" class="modal">
-                <div class="modal-content">
-                    <h4 class="modal-text">Share book</h4>
-                    <input type="text" id="share-url">
+            <div id="modal-share-book" class="modal px-3">
+                <div class="modal-content modal-share">
+                    <h4 class="modal-text ml-2">Share book</h4>
+                    <input type="text" id="share-url" class="mx-2">
                     <a id="copy-btn">
-                        <i class="fas fa-copy material-icons right" aria-hidden="true"></i>Copy Link
+                        <p class="mt-1 ml-2"><i class="fas fa-copy" aria-hidden="true"></i> Copy Link</p>
                     </a>
                 </div>
             </div>

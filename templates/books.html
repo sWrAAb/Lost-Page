@@ -13,7 +13,10 @@
         {% for book in books %}
         <div class="card mx-auto my-2" style="width: 12rem;">
             <a href="{{url_for('view_book', book_id=book._id)}}">
-                <img src="{{book.cover_img}}" class="card-img-top card-image" alt="Image">
+                {% if not book.cover_img %}
+                <img src="{{ url_for('static', filename='images/no_Image_available.png') }}" class="card-img-top card-img-top-books no-book" title="{{book.title}} by {{ book.author }}"></div>
+                {% else %}
+                <img src="{{book.cover_img}}" class="card-img-top card-img-top-books" title="{{book.title}} by {{ book.author }}"> {% endif %}
             </a>
         </div>
         {% endfor %}
