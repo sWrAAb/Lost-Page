@@ -96,6 +96,9 @@ The Lost Page was designed to be simple and presentable using book images as lin
 **Search Books**
 - On the **books** page above books is a search bar that uses users query to search books by author name, book name or genre. Trying to make it case insensitive resulted in a error and becouse of lack of time, the search bar is case sensitive.
 
+**Links to store**
+- Under every book on the view book page are links to store. They are not connected to anything at this time.
+
 **Add a Book**
 - [**C**RUD] Create or 'add' a new book. Defensive programming in place means users must adhere to minimal requirements when adding a new book. 
 
@@ -147,7 +150,7 @@ Because of lack of time for finishing this project some requirements were not co
 - **Flask**
     - [Flask 1.1.1](http://flask.pocoo.org/) - Used as a microframework.
     - [Jinja2 2.10.3](http://jinja.pocoo.org/docs/2.10/) - Used for templating with Flask.
-    - [Werkzeug  0.16.0](https://werkzeug.palletsprojects.com/en/0.16.x/) - Used for password hashing, authentication, and authorization.
+    - [Werkzeug  0.16.0](https://werkzeug.palletsprojects.com/en/0.16.x/) 
 - **Heroku**
     - [Heroku](https://www.heroku.com) - Used for app hosting.
 - **Python**    
@@ -159,7 +162,7 @@ Because of lack of time for finishing this project some requirements were not co
 
 ## Testing
 
-Testing information can be found in separate [testing.md]() file
+Testing information can be found in separate [testing.md](https://github.com/sWrAAb/Lost-Page/blob/master/static/testing.md) file
 
 
 
@@ -201,7 +204,7 @@ To ensure a broad range of users can successfully use this site, I tested it on 
 
 - Search bar is case sensitive at this time so words need to be capitalized 
 - If no image was added to book, on books page alternative image is added, however I could not make it fit on book details in time. Instead there is blank space with text added in html alt="".
-- Edit book information modal does not display description. Textarea returns empty every time.
+- Edit book information form does not display description. Textarea returns empty every time.
 
 
 
