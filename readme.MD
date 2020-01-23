@@ -21,10 +21,11 @@
 4. [**Testing**](#testing)
     - [**Validators**](#validators)
     - [**Compatibility**](#compatibility)
+    - [**Known Issues**](#known-issues)
 
 5. [**Deployment**](#deployment)
     - [**Local Deployment**](#local-deployment)
-    - [**Remote Deployment**](#remote-deployment)
+    - [**Heroku Deployment**](#heroku-deployment)
 
 6. [**Credits**](#credits)
     - [**Content**](#content)
@@ -63,12 +64,12 @@ The Lost Page was designed to be simple and presentable using book images as lin
 - [jQuery 3.4.1](https://code.jquery.com/jquery/)
     - In an effort to keep the JavaScript minimal, I have decided to use jQuery as foundation to my scripts framework.
 - [Flask 1.1.1](http://flask.pocoo.org/)
-    - Flask is a microframework that I've used to render the back-end Python with the front-end Materialize.
+    - Flask is a microframework that I've used to render the back-end Python with the front-end Bootstrap 4.
 
 #### Icons
 
 - [Font Awesome 5.11.2](https://fontawesome.com/) 
-  - I only used icons for home and social networks.
+  - I only used icons for home, social networks, share icon and copy for modal.
 
 #### Typography
 
@@ -93,7 +94,7 @@ The Lost Page was designed to be simple and presentable using book images as lin
 - On the *books* page, all books are initially displayed in order of adding.
 
 **Search Books**
-- On the **books** page above books is a search bar that uses users query to search books by author name, book name or genre. Trying to make it case insensitive resulted in a bug and becouse of lack of time, the search bar is case sensitive.
+- On the **books** page above books is a search bar that uses users query to search books by author name, book name or genre. Trying to make it case insensitive resulted in a error and becouse of lack of time, the search bar is case sensitive.
 
 **Add a Book**
 - [**C**RUD] Create or 'add' a new book. Defensive programming in place means users must adhere to minimal requirements when adding a new book. 
@@ -110,7 +111,7 @@ The Lost Page was designed to be simple and presentable using book images as lin
 
 ### Features Left to Implement
 
-Becouse of lack of time for finnishing this project some requirements were not completed.
+Because of lack of time for finishing this project some requirements were not completed.
 
 **Pagination**
 - At this time all books are displayed on a single page. It works now but might take long time to load when more books are added.
@@ -158,6 +159,8 @@ Becouse of lack of time for finnishing this project some requirements were not c
 
 ## Testing
 
+Testing information can be found in separate [testing.md]() file
+
 
 
 ### Validators
@@ -168,14 +171,6 @@ Becouse of lack of time for finnishing this project some requirements were not c
 **CSS**
 - [W3C CSS Validator](https://jigsaw.w3.org/css-validator/) - Did not show any problems
 
-
-
-- **Same color for background-color and border-bottom-color** - The code below overrides the Materialize color for the checkbox animation effect, so the validator thinks this is an error, but is correct in order to override the color with my own.
-
-```css
-[type="radio"].with-gap:checked + span:after
-[type="radio"]:checked + span:after
-```
 
 **JavaScript**
 - [JShint](https://jshint.com/) - 
@@ -200,6 +195,14 @@ To ensure a broad range of users can successfully use this site, I tested it on 
 - Opera 
 - Internet Explorer
 
+[Autoprefixer](https://autoprefixer.github.io) was used for parsing CSS and adding vendor prefixes
+
+### Known Issues
+
+- Search bar is case sensitive at this time so words need to be capitalized 
+- If no image was added to book, on books page alternative image is added, however I could not make it fit on book details in time. Instead there is blank space with text added in html alt="".
+- Edit book information modal does not display description. Textarea returns empty every time.
+
 
 
 ##### back to [top](#table-of-contents)
@@ -213,4 +216,113 @@ In order to run this project locally on your own system, you will need the follo
 - [GIT](https://www.atlassian.com/git/tutorials/install-git) for cloning and version control.
 - [MongoDB](https://www.mongodb.com) to develop your own database either locally or remotely on MongoDB Atlas.
 
-N
+
+### Instructions
+
+1. Save a copy of the github repository located at https://github.com/sWrAAb/Lost-Page by clicking the "download zip" button at the top of the page and extracting the zip file to your chosen folder. If you have Git installed on your system, you can clone the repository with the following command.
+```
+git clone https://github.com/sWrAAb/Lost-Page
+```
+
+2. If possible open a terminal session in the unzip folder or cd to the correct location.
+
+3. A virtual environment is recommended for the Python interpreter.<br> To create virtual environment enter the command:
+```
+python -m .venv venv
+```  
+
+4. Activate the .venv with the command:
+```
+.venv\Scripts\activate 
+```
+
+4. If needed, Upgrade pip locally with
+```
+pip install --upgrade pip.
+```
+
+5. Install all required modules with the command 
+```
+pip -r requirements.txt.
+```
+
+6. In your local IDE create a file called `.flaskenv`.
+
+7. Inside the .flaskenv file, create a SECRET_KEY variable and a MONGO_URI to link to your own database.
+
+8. You can now run the application with the command
+```
+python app.py
+```
+
+9. You can visit the website at `http://127.0.0.1:5000`
+
+## Heroku Deployment
+
+To deploy The Lost Page to heroku, take the following steps:
+
+1. Create a `requirements.txt` file using the terminal command `pip freeze > requirements.txt`.
+
+2. Create a `Procfile` with the terminal command `echo web: python app.py > Procfile`.
+
+3. `git add` and `git commit` the new requirements and Procfile and then `git push` the project to GitHub.
+
+3. Create a new app on the [Heroku website](https://dashboard.heroku.com/apps) by clicking the "New" button in your dashboard. Give it a name and set the region to Europe.
+
+4. From the heroku dashboard of your newly created application, click on "Deploy" > "Deployment method" and select GitHub.
+
+5. Confirm the linking of the heroku app to the correct GitHub repository.
+
+6. In the heroku dashboard for the application, click on "Settings" > "Reveal Config Vars".
+
+7. Set the following config vars:
+
+| Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 0.0.0.0
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-qtxun.mongodb.net/<database_name>?retryWrites=true&w=majority`
+PORT | 5000
+MONGO_URI | `<your_uri>`
+
+- To get you MONGO_URI read the MongoDB Atlas documentation [here](https://docs.atlas.mongodb.com/)
+
+8. In the heroku dashboard, click "Deploy".
+
+9. In the "Manual Deployment" section of this page, made sure the master branch is selected and then click "Deploy Branch".
+
+10. The site is now successfully deployed.
+
+##### back to [top](#table-of-contents)
+
+## Credits
+
+### Content
+
+Books and descriptions were linked from various websites such as:
+
+- [Goodreads](https://www.goodreads.com/)
+- [Wikipedia](https://en.wikipedia.org/wiki/Main_Page)
+
+### Media
+
+#### Logo
+
+Logo was made on [Freelogodesign](https://www.freelogodesign.org/)
+
+#### Images
+
+All images except logo and image that is shown when no cover image is selected are linked with url.
+
+### Code
+
+- Template code was taken from [Bootstrap](https://getbootstrap.com) and [W3Schools](https://www.w3schools.com)
+- CSS code from [CSS Tricks](https://css-tricks.com)
+- Python code from Code Institute lessons
+- Search bar, show total books in navbar and show alternate image when no cover image was added from [RealPython](https://realpython.com)
+
+### Acknowledgements
+
+- To my mentor, Spencer Barriball, for incredible mentoring, support and for assisting during my project reviews with great insight.
+
+##### back to [top](#table-of-contents)

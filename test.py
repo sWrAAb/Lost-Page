@@ -38,12 +38,7 @@ class FlaskTestCase(unittest.TestCase):
         tester=app.test_client(self)
         response=tester.get('/add_book', data=dict(title= 'Around the World in Eighty Days'), 
         follow_redirects=True)
-        self.assertIn(b'Adventure', response.data)    
-        
-
-
-
-
+        self.assertIn(b'Adventure', response.data)  
 
 
 if __name__ == '__main__':

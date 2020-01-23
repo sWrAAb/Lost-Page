@@ -5,11 +5,6 @@ from bson.objectid import ObjectId
 from os import path
 import re
 
-
-if path.exists("env.py"):
-    import env
-
-
 # create instance of flask and assign it to app
 
 
