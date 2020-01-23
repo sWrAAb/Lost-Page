@@ -162,7 +162,7 @@ Because of lack of time for finishing this project some requirements were not co
 
 ## Testing
 
-Testing information can be found in separate [testing.md](https://github.com/sWrAAb/Lost-Page/blob/master/static/testing.md) file
+Testing information can be found in separate [testing.md](https://github.com/sWrAAb/Lost-Page/blob/master/testing.MD) file
 
 
 
