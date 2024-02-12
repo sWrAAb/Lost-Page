@@ -13,7 +13,8 @@
         <div class="col-11 col-md-5 m-0 p-0 view-book-container">
             {% for book in books%}
             <div class="card m-auto" style="width: 18rem;">
-                <img src="{{book.cover_img}}" class="card-img-top card-image" alt=" Add image">
+                <img src="{{book.cover_img}}" class="card-img-top card-image" alt=" Add image"
+                    onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/no_Image_available.png') }}';">
             </div>
         </div>
         <div class="col-11 col-md-5 mt-2 p-0">
