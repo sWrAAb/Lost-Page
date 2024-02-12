@@ -3,6 +3,8 @@ from flask import Flask, redirect, render_template, request, url_for
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
+from dotenv import load_dotenv
+load_dotenv()
 import re
 
 # create instance of flask and assign it to app
@@ -15,7 +17,7 @@ app = Flask(__name__)
 
 
 app.config["MONGO_DBNAME"] = 'TheLostPage'
-app.config["MONGO_URI"] = os.environ.get('MONGO_URI')
+app.config["MONGO_URI"] = os.getenv('MONGO_URI')
 
 
 mongo = PyMongo(app)
@@ -25,6 +27,7 @@ mongo = PyMongo(app)
 @app.route('/home')
 def index():
     return render_template('index.html', books=mongo.db.books.find())
+
 
 
 # ----- READ ALL ----- #
@@ -47,11 +50,10 @@ def books():
 @app.route('/search')
 def search():
     '''
-    Search books by keywords. Any letter however had to leave it
-    case sensitive. If i add /i bug apears
+    Search books by keywords. Case insensitive.
     '''
     user_query = request.args['query']
-    query = {'$regex': re.compile('.*{}.*'.format(user_query))}
+    query = {'$regex': re.compile('.*{}.*'.format(re.escape(user_query)), re.IGNORECASE)}
     result = mongo.db.books.find({
         '$or': [
             {'title': query},
@@ -62,6 +64,7 @@ def search():
     return render_template('search_results.html',
                             query=user_query,
                             books=result)
+
 
 
 @app.route('/categories')
@@ -130,15 +133,18 @@ def edit_book(book_id):
 @app.route('/update_book/<book_id>', methods=["POST"])
 def update_book(book_id):
     books = mongo.db.books
-    books.update({'_id': ObjectId(book_id)},
-    {
-        'title': request.form.get('title'),
-        'author': request.form.get('author'),
-        'year': request.form.get('year'),
-        'genre': request.form.get('genre'),
-        'cover_img': request.form.get('cover_img'),
-        'description': request.form.get('description')
-    })
+    # Use `update_one` instead of `update`
+    result = books.update_one(
+        {'_id': ObjectId(book_id)},
+        {'$set': {
+            'title': request.form.get('title'),
+            'author': request.form.get('author'),
+            'year': request.form.get('year'),
+            'genre': request.form.get('genre'),
+            'cover_img': request.form.get('cover_img')  
+        }}
+    )
+
     return redirect(url_for('books'))
 
 
@@ -150,7 +156,7 @@ def delete_book(book_id):
     """
     Removes book from database.
     """
-    mongo.db.books.remove({'_id': ObjectId(book_id)})
+    mongo.db.books.delete_one({'_id': ObjectId(book_id)})
     return redirect(url_for('books'))
 
 
@@ -160,11 +166,14 @@ def books_total():
     Show total number of books in collection.
     Displayed in navbar.
     """
-    books_count = mongo.db.books.count
+    books_count = mongo.db.books.count_documents({})  # Updated to use count_documents
     return dict(books_count=books_count)
-
-
+'''
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
             port=os.environ.get('PORT'),
             debug=False)
+'''
+
+if __name__ == "__main__":
+    app.run(debug=True)
