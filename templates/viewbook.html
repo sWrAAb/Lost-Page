@@ -28,25 +28,33 @@
         {% endfor %}
 
         <!-- Share Button -->
+
         <div class="col-12 mt-2 ml-3">
-            <a id="share-btn" class="share-button" data-toggle="modal" data-target="#modal-share-book">
+            <a id="share-btn" class="share-button btn-info" data-bs-toggle="modal" data-bs-target="#modal-share-book">
                 <span>Share</span>
                 <i class="fas fa-share-alt" aria-hidden="true"></i></a>
         </div>
-        <!-- Share modal -->
 
-        <div class="col-12 col-md-6 col-lg-4">
-            <div id="modal-share-book" class="modal px-3">
+
+        <!-- Share modal -->
+        <div class="modal fade" id="modal-share-book" tabindex="-1" aria-labelledby="modal-share-book" aria-hidden="true" data-book-cover-img="{{ book.cover_img }}">
+            <div class="modal-dialog">
                 <div class="modal-content modal-share">
-                    <h4 class="modal-text ml-2">Share book</h4>
-                    <input type="text" id="share-url" class="mx-2">
-                    <a id="copy-btn">
-                        <p class="mt-1 ml-2"><i class="fas fa-copy" aria-hidden="true"></i> Copy Link</p>
-                    </a>
+                    <div class="modal-header">
+                        <h4 class="modal-title fs-5 text-center" id="modal-share-book">Share book</h4>
+                        <input type="text" id="share-url" class="mx-2">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <button type="button" id="copy-btn" class="btn btn-primary">Copy link</button>
+                    </div>
                 </div>
             </div>
         </div>
 
+
+
+        
         <!--Delete alert modal-->
 
         <div class="modal" tabindex="-1" id="confirm-delete-modal" role="dialog" data-backdrop="static" data-keyboard="false" data-target="#staticBackdrop">
@@ -60,7 +68,7 @@
                     </div>
                     <div class="modal-footer d-flex justify-content-between">
                         <a id="delete-button" class="btn btn-danger" href="{{ url_for('delete_book', book_id=book._id) }}" role="button">Confirm Delete</a>
-                        <button type="button" class="btn btn-info" data-dismiss="modal" aria-label="Close">Close</button>
+                        <button type="button" class="btn btn-info" data-bs-dismiss="modal" aria-label="Close">Close</button>
                     </div>
                 </div>
             </div>
@@ -69,7 +77,7 @@
     <div>
         <div class="col-12 edit-delete-button-column mt-3 mx-3">
             <a class="btn btn-warning my-2" href="{{ url_for('edit_book', book_id=book._id) }}" role="button">Edit book</a>
-            <button type="button" class="btn btn-danger my-2" data-toggle="modal" data-target="#confirm-delete-modal">Delete book</button>
+            <button type="button" class="btn btn-danger my-2" data-bs-toggle="modal" data-bs-target="#confirm-delete-modal">Delete book</button>
             <a class="btn btn-secondary my-2" href="{{url_for('books')}}" role="button">Return to books</a>
         </div>
     </div>

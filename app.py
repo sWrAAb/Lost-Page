@@ -1,5 +1,5 @@
 import os
-from flask import Flask, redirect, render_template, request, url_for
+from flask import Flask, redirect, render_template, request, url_for, abort
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from os import path
@@ -150,14 +150,16 @@ def update_book(book_id):
 
 # ----- DELETE ----- #
 
+import logging
 
 @app.route('/delete_book/<book_id>')
 def delete_book(book_id):
-    """
-    Removes book from database.
-    """
-    mongo.db.books.delete_one({'_id': ObjectId(book_id)})
-    return redirect(url_for('books'))
+    try:
+        mongo.db.books.delete_one({'_id': ObjectId(book_id)})
+        return redirect(url_for('books'))
+    except Exception as e:
+        logging.error(f"Error deleting book with ID {book_id}: {e}")
+        abort(500)  # Internal Server Error
 
 
 @app.context_processor
