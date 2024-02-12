@@ -13,9 +13,4 @@ $( document ).ready(function() {
             // Alert the user that copying failed.
         });
     });
-    function handleImageError(imageElement) {
-        const fallbackSrc = imageElement.getAttribute('data-fallback-src');
-        imageElement.onerror = null; // Prevent infinite fallback loop
-        imageElement.src = fallbackSrc;
-    };
 });

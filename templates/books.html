@@ -14,8 +14,8 @@
         <div class="card mx-1 my-1" style="width: 14rem;">
             <a href="{{url_for('view_book', book_id=book._id)}}">
                 <!-- Use the 'onerror' attribute to replace the src if the image fails to load -->
-                <img src="{{ book.cover_img }}" data-fallback-src="{{ url_for('static', filename='images/no_Image_available.png') }}" class="card-img-top card-image" alt="Image"
-                     onerror="handleImageError(this);">
+                <img src="{{ book.cover_img }}" class="card-img-top card-image" alt="Image"
+                     onerror="this.onerror=null; this.src='{{ url_for('static', filename='images/no_Image_available.png') }}';">
             </a>
         </div>
         {% endfor %}

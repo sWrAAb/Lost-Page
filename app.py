@@ -132,8 +132,8 @@ def edit_book(book_id):
 
 @app.route('/update_book/<book_id>', methods=["POST"])
 def update_book(book_id):
+    '''Updates parameters and returns user to'''
     books = mongo.db.books
-    # Use `update_one` instead of `update`
     result = books.update_one(
         {'_id': ObjectId(book_id)},
         {'$set': {
@@ -170,6 +170,7 @@ def books_total():
     """
     books_count = mongo.db.books.count_documents({})  # Updated to use count_documents
     return dict(books_count=books_count)
+
 '''
 if __name__ == "__main__":
     app.run(host=os.environ.get('IP'),
