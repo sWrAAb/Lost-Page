@@ -76,7 +76,7 @@ def categories():
 #    CRUD: Create | Read | Update | Delete    #
 
 
-# --CREATE-- #
+# ----CREATE---- #
 
 @app.route('/add_book')
 def add_book():
